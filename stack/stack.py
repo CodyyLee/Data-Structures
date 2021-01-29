@@ -13,13 +13,41 @@ return elements in Last In First Out order.
 class Stack:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = []
 
     def __len__(self):
-        pass
+        return self.size
 
     def push(self, value):
-        pass
+        self.size = self.size + 1
+        self.storage.insert(0, value)
 
     def pop(self):
-        pass
+        if self.size != 0:
+            removed = self.storage[0]
+            self.storage.pop(0)
+            self.size = self.size - 1
+            return removed
+        else:
+            return None
+
+from singly_linked_list import Node, LinkedList
+
+# class Stack:
+#     def __init__(self):
+#         self.size = 0
+#         self.storage = LinkedList()
+
+#     def __len__(self):
+#         return self.size
+
+#     def push(self, value):
+#         self.size = self.size + 1
+#         self.storage.add_to_head(value)
+
+#     def pop(self):
+#         if self.size != 0:
+#             self.size = self.size - 1
+#             return self.storage.remove_head()
+#         else:
+#             return None

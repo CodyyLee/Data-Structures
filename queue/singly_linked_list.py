@@ -48,6 +48,24 @@ class LinkedList:
         # reference to the tail of the list
         self.tail = None
 
+    def add_to_head(self, value):
+        if self.head is None:
+            #empty list
+            new_node = Node(value, None)
+            self.head = new_node
+            self.tail = new_node
+        elif self.head.next_node is None:
+            #one item list
+            old_head = self.head
+            new_node = Node(value, old_head)
+            self.head = new_node
+            self.tail = old_head
+        else:
+            #multi item list
+            old_head = self.head
+            new_node = Node(value, old_head)
+            self.head = new_node
+
     def add_to_tail(self, value):
         # wrap the input value in a node
         new_node = Node(value, None)
@@ -100,6 +118,7 @@ class LinkedList:
 
         value = self.tail.get_value()
         self.tail = current
+        self.tail.set_next(None)
         return value
 
     def contains(self, value):
